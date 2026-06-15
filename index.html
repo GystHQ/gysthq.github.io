@@ -104,6 +104,11 @@
       .wc { --c1: var(--wc); --c2: var(--wc-2); }
       .f1 { --c1: var(--f1); --c2: var(--f1-2); }
 
+      /* "Coming soon" card — visible teaser, not clickable */
+      .game.soon { opacity: 0.62; cursor: default; }
+      .game.soon:hover { transform: none; border-color: var(--border); box-shadow: none; }
+      .game.soon .play { color: var(--muted); }
+
       footer { padding: 22px 0 30px; color: var(--muted); font-size: 0.85rem; text-align: center; }
       footer a { color: var(--muted); }
     </style>
@@ -172,13 +177,13 @@
             <span class="play">Play now <span class="arrow">→</span></span>
           </a>
 
-          <a class="game f1" href="/f1/">
-            <span class="tag">New</span>
+          <div class="game f1 soon">
+            <span class="tag">Coming soon</span>
             <span class="kicker">Formula 1 · Apex Collectors</span>
             <h2>F1 Card Racing</h2>
             <p>Pull car parts and driver cards, build a car with real trade-offs, set your strategy, and race the grid.</p>
-            <span class="play">Play now <span class="arrow">→</span></span>
-          </a>
+            <span class="play">Coming soon</span>
+          </div>
         </section>
       </div>
     </main>
