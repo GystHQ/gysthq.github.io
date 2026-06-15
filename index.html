@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0e14" />
+    <title>GYST Games</title>
+    <meta name="description" content="Collect, build, and compete — offline-first card games by GYST." />
+    <style>
+      :root {
+        --bg: #0a0e14;
+        --panel: #131b27;
+        --panel-2: #1a2433;
+        --border: #2a3647;
+        --text: #e9eef6;
+        --muted: #8a97aa;
+        --wc: #00b454;
+        --wc-2: #ffcf33;
+        --f1: #e10600;
+        --f1-2: #18c3ff;
+        --radius: 18px;
+        --font: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        background-image:
+          radial-gradient(1100px 560px at 18% -10%, #15321f 0%, transparent 55%),
+          radial-gradient(1100px 560px at 85% -8%, #2a0c0c 0%, transparent 55%),
+          radial-gradient(1000px 700px at 50% 120%, #101a2b 0%, transparent 60%);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      .wrap { width: 100%; max-width: 980px; margin: 0 auto; padding: 0 20px; }
+      header { padding: 40px 0 8px; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: 0.5px; font-size: 1.05rem; }
+      .brand .mark {
+        width: 34px; height: 34px; border-radius: 9px;
+        background: conic-gradient(from 200deg, var(--f1), var(--wc-2), var(--f1-2), var(--f1));
+        box-shadow: 0 0 22px rgba(225, 6, 0, 0.35);
+      }
+      main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 32px 0 56px; }
+      .hero { text-align: center; margin-bottom: 40px; }
+      .hero h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2.2rem, 6vw, 3.6rem);
+        line-height: 1.04;
+        letter-spacing: -0.5px;
+      }
+      .hero h1 .accent {
+        background: linear-gradient(90deg, var(--wc-2), var(--f1-2));
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .hero p { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.18rem); line-height: 1.6; }
+
+      .games { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      .game {
+        position: relative;
+        display: flex; flex-direction: column;
+        background: linear-gradient(180deg, var(--panel-2), var(--panel));
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 26px;
+        text-decoration: none; color: inherit;
+        overflow: hidden;
+        transition: transform 0.14s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+        min-height: 230px;
+      }
+      .game::before {
+        content: ''; position: absolute; inset: 0 0 auto 0; height: 5px;
+        background: linear-gradient(90deg, var(--c1), var(--c2));
+      }
+      .game::after {
+        content: ''; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px;
+        background: radial-gradient(closest-side, var(--c1), transparent);
+        opacity: 0.16; pointer-events: none;
+      }
+      .game:hover { transform: translateY(-5px); border-color: var(--c1); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5); }
+      .game:focus-visible { outline: 2px solid var(--c2); outline-offset: 3px; }
+      .game .kicker { font-size: 0.74rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+      .game h2 { margin: 8px 0 10px; font-size: 1.6rem; }
+      .game p { margin: 0; color: var(--muted); line-height: 1.55; flex: 1; }
+      .game .play {
+        margin-top: 18px; display: inline-flex; align-items: center; gap: 8px;
+        font-weight: 800; color: var(--c2);
+      }
+      .game .play .arrow { transition: transform 0.16s ease; }
+      .game:hover .play .arrow { transform: translateX(4px); }
+      .game .tag {
+        align-self: flex-start; margin-bottom: 4px;
+        font-size: 0.68rem; font-weight: 800; letter-spacing: 0.5px;
+        padding: 3px 9px; border-radius: 999px;
+        border: 1px solid var(--c1); color: var(--c1);
+        background: color-mix(in srgb, var(--c1) 12%, transparent);
+      }
+
+      .wc { --c1: var(--wc); --c2: var(--wc-2); }
+      .f1 { --c1: var(--f1); --c2: var(--f1-2); }
+
+      footer { padding: 22px 0 30px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="brand"><span class="mark" aria-hidden="true"></span> GYST&nbsp;Games</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <section class="hero">
+          <h1>Collect. Build. <span class="accent">Compete.</span></h1>
+          <p>Two offline-first card games you can play right in your browser. Open packs, assemble your dream lineup, and take on the world.</p>
+        </section>
+
+        <section class="games" aria-label="Games">
+          <a class="game wc" href="/worldcup/">
+            <span class="tag">Live</span>
+            <span class="kicker">Football · 2026</span>
+            <h2>World Cup Cards</h2>
+            <p>Collect all 48 squads and 1,248 players, build your fantasy team, and battle through the tournament.</p>
+            <span class="play">Play now <span class="arrow">→</span></span>
+          </a>
+
+          <a class="game f1" href="/f1/">
+            <span class="tag">New</span>
+            <span class="kicker">Formula 1 · Apex Collectors</span>
+            <h2>F1 Card Racing</h2>
+            <p>Pull car parts and driver cards, build a car with real trade-offs, set your strategy, and race the grid.</p>
+            <span class="play">Play now <span class="arrow">→</span></span>
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">© <span id="y"></span> GYST · <a href="https://thomasanakin.com">thomasanakin.com</a></div>
+    </footer>
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear()
+    </script>
+  </body>
+</html>
