@@ -19,6 +19,8 @@
         --wc-2: #ffcf33;
         --f1: #e10600;
         --f1-2: #18c3ff;
+        --bb: #ee6730;
+        --bb-2: #a06bff;
         --radius: 18px;
         --font: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
       }
@@ -103,6 +105,7 @@
 
       .wc { --c1: var(--wc); --c2: var(--wc-2); }
       .f1 { --c1: var(--f1); --c2: var(--f1-2); }
+      .bb { --c1: var(--bb); --c2: var(--bb-2); }
 
       /* "Coming soon" card — visible teaser, not clickable */
       .game.soon { opacity: 0.62; cursor: default; }
@@ -165,7 +168,7 @@
       <div class="wrap">
         <section class="hero">
           <h1>Collect. Build. <span class="accent">Compete.</span></h1>
-          <p>Two offline-first card games you can play right in your browser. Open packs, assemble your dream lineup, and take on the world.</p>
+          <p>Three offline-first card games you can play right in your browser. Open packs, assemble your dream lineup, and take on the world.</p>
         </section>
 
         <section class="games" aria-label="Games">
@@ -182,6 +185,14 @@
             <span class="kicker">Formula 1 · Apex Collectors</span>
             <h2>F1 Card Racing</h2>
             <p>Pull car parts and driver cards, build a car with real trade-offs, set your strategy, and race the grid.</p>
+            <span class="play">Play now <span class="arrow">→</span></span>
+          </a>
+
+          <a class="game bb" href="/basketball/">
+            <span class="tag">Live</span>
+            <span class="kicker">Basketball · NBA &amp; WNBA</span>
+            <h2>Hoops Cards</h2>
+            <p>Collect 576 NBA &amp; WNBA stars across 43 teams, pick your starting five, and shoot for the Global Cup.</p>
             <span class="play">Play now <span class="arrow">→</span></span>
           </a>
         </section>
