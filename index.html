@@ -183,7 +183,7 @@
       .act-bball .ball.bball { opacity: 1; animation: dribbleBall .46s cubic-bezier(.3,0,.7,1) infinite; }
 
       /* DRIVE — he hops in the F1 car, zooms off right, returns from the left */
-      .act-drive .mascot { opacity: 0; }
+      .act-drive .mascot { opacity: 0; transition: none; }   /* cut to the car instantly: a fade here would briefly expose the resting Jedi pose (saber-arm snaps back + blade fades in) between hoops and racing */
       .act-drive .car { opacity: 1; animation: driveTrip 4.4s ease-in-out forwards; }
       @keyframes driveTrip {
         0%   { transform: translateX(0); opacity: 1; }
@@ -315,7 +315,7 @@
         <div class="hero-copy">
           <span class="eyebrow reveal"><span class="wave" aria-hidden="true">👋</span> Hi, I'm Thomas!</span>
           <h1 class="reveal">Welcome to my<br /><span class="line2">GAMES HUB</span></h1>
-          <p class="lede reveal">Three card games I made: football, racing, and hoops. They play right here, no download. Jump in!</p>
+          <p class="lede reveal">Three games I made: football, racing, and hoops. They play right here, no download. Jump in!</p>
         </div>
 
         <div class="stage" aria-hidden="true">
@@ -382,7 +382,7 @@
                 <span class="tag">🏎️ Live now</span>
                 <h3>Apex Collectors<span class="by">Formula 1 · racing</span></h3>
                 <p>Pull car parts and driver cards, build a car with real trade-offs, set your strategy, then race the grid. Collect every part on the 2026 grid.</p>
-                <span class="btn small">Open starter pack <span class="chev">▸</span></span>
+                <span class="btn small">Pick your driver <span class="chev">▸</span></span>
               </span>
             </a>
 
@@ -434,7 +434,7 @@
             </svg>
             <div>
               <h3>Made by Thomas</h3>
-              <p>I'm a kid who loves building card games. These three are done, and I'm still making more. Have fun!</p>
+              <p>I'm a kid who loves building games. These three are done, and I'm still making more. Have fun!</p>
             </div>
           </div>
         </div>
