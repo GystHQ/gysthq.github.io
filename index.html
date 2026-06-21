@@ -25,6 +25,7 @@
         --wc: #00b454; --wc-dark:#018a41;
         --f1: #e10600; --f1-cyan:#18c3ff;
         --bb: #ee6730; --bb-purple:#a06bff;
+        --tn: #46a049; --tn-dark:#2c7a36;
         --font-display: 'Lilita One', system-ui, sans-serif;
         --font-body: 'Baloo 2', system-ui, sans-serif;
       }
@@ -241,8 +242,8 @@
       .tile p { font-weight: 600; font-size: 1rem; line-height: 1.4; margin: 9px 0 16px; color: #2b3340; flex: 1; }
       .tile .btn { width: 100%; justify-content: center; }
 
-      .wc-face { background: var(--wc); } .f1-face { background: var(--ink); } .bb-face { background: var(--bb); }
-      .wc h3 { color: var(--wc-dark); } .f1 h3 { color: var(--f1); } .bb h3 { color: #c24a1c; }
+      .wc-face { background: var(--wc); } .f1-face { background: var(--ink); } .bb-face { background: var(--bb); } .tn-face { background: var(--tn); }
+      .wc h3 { color: var(--wc-dark); } .f1 h3 { color: var(--f1); } .bb h3 { color: #c24a1c; } .tn h3 { color: var(--tn-dark); }
       .wc .btn { background: var(--sun); --edge: var(--sun-dark); }
       .f1 .btn { background: #c70500; --edge: #930300; color: #fff; }
       .bb .btn { background: #7a45e0; --edge: #5a2fbe; color: #fff; }
@@ -407,6 +408,28 @@
                 <h3>Hoops Cards<span class="by">NBA &amp; WNBA</span></h3>
                 <p>Pick the team you love and we celebrate every star you pull! Choose your starting five from 576 NBA &amp; WNBA stars across 43 teams.</p>
                 <span class="btn small">Pick your five <span class="chev">▸</span></span>
+              </span>
+            </a>
+
+            <!-- Tennis: clay court + ball -->
+            <a class="tile tn" href="/tennis/" aria-label="Play Davis Cup Tennis Cards">
+              <span class="scene tn-face" aria-hidden="true">
+                <svg viewBox="0 0 120 44" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" shape-rendering="crispEdges">
+                  <rect x="10" y="6" width="100" height="28" rx="2" fill="#c2562a" stroke="#1d2330" stroke-width="1"/>
+                  <g stroke="#fff" stroke-width="1.5" fill="none">
+                    <rect x="10" y="6" width="100" height="28"/>
+                    <line x1="60" y1="3" x2="60" y2="37"/>
+                    <line x1="34" y1="11" x2="34" y2="29"/><line x1="86" y1="11" x2="86" y2="29"/>
+                    <line x1="34" y1="20" x2="86" y2="20"/>
+                  </g>
+                  <circle cx="44" cy="26" r="3.5" fill="#d6f24a" stroke="#1d2330" stroke-width="1"/>
+                </svg>
+              </span>
+              <span class="tile-body">
+                <span class="tag">🎾 Live now</span>
+                <h3>Davis Cup Tennis<span class="by">ATP &amp; WTA</span></h3>
+                <p>Pick your nation, build a Davis Cup five of men and women, then PLAY every point — serve, rally and score 0-15-30-40 on grass, clay, hard and indoor courts.</p>
+                <span class="btn small">Pick your nation <span class="chev">▸</span></span>
               </span>
             </a>
 
