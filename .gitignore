@@ -1,0 +1,6 @@
+# Local working artifacts — design/test screenshots, not part of the published site
+screenshots/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
