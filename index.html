@@ -127,14 +127,16 @@
       }
       /* the saber is its own group so it can be put away during ball play */
       #saber { transition: opacity .25s ease; }
-      .act-soccer #saber, .act-bball #saber { opacity: 0; }
+      .act-soccer #saber, .act-bball #saber, .act-tennis #saber { opacity: 0; }
 
       /* ---------- props: pixel-art, matched to the mascot ---------- */
-      .car, .ball, .droid, .bolt { position: absolute; opacity: 0; pointer-events: none; will-change: transform, opacity; }
-      .car svg, .ball svg, .droid svg { display: block; width: 100%; height: auto; }
+      .car, .ball, .droid, .bolt, .racket { position: absolute; opacity: 0; pointer-events: none; will-change: transform, opacity; }
+      .car svg, .ball svg, .droid svg, .racket svg { display: block; width: 100%; height: auto; }
       .ball { width: 50px; left: 50%; }
       .ball.soccer { margin-left: -12px; bottom: 4px; }
       .ball.bball  { margin-left: 28px; bottom: 4px; }
+      .ball.tennis { width: 26px; margin-left: 120px; bottom: 151px; }
+      .racket { width: 104px; right: -60px; bottom: 88px; z-index: 4; transform-origin: -24px 29px; }
       .car { width: 690px; right: 1%; bottom: 50px; z-index: 5; transition: opacity .35s ease; }
       .droid { width: 40px; top: 0; left: -8px; }
       .bolt { width: 15px; height: 6px; top: 34px; left: 22px; border: 2px solid #2a1d12; border-radius: 4px;
@@ -182,6 +184,15 @@
       @keyframes dribbleBall  { 0% { transform: translateY(-58px) scaleY(1); } 48%,52% { transform: translateY(0) scaleY(.82); } 100% { transform: translateY(-58px) scaleY(1); } }
       .act-bball #armSaber { animation: dribbleRight .46s ease-in-out infinite; }
       .act-bball .ball.bball { opacity: 1; animation: dribbleBall .46s cubic-bezier(.3,0,.7,1) infinite; }
+
+      /* TENNIS — the arm swings up and down to tap the ball; the racket rotates with it
+         around the same shoulder pivot so it stays locked in the hand (saber put away) */
+      @keyframes tennisHold  { 0%,100% { transform: rotate(44deg); } 50% { transform: rotate(56deg); } }  /* arm up at contact, down between taps */
+      @keyframes racketSwing { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(12deg); } }    /* same swing, pivoting at the shoulder */
+      @keyframes tennisRally { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-92px); } }  /* on the strings -> peak -> back down */
+      .act-tennis #armSaber { animation: tennisHold .82s ease-in-out infinite; }
+      .act-tennis .racket   { opacity: 1; animation: racketSwing .82s ease-in-out infinite; }
+      .act-tennis .ball.tennis { opacity: 1; animation: tennisRally .82s cubic-bezier(.3,0,.7,1) infinite; }
 
       /* DRIVE — he hops in the F1 car, zooms off right, returns from the left */
       .act-drive .mascot { opacity: 0; transition: none; }   /* cut to the car instantly: a fade here would briefly expose the resting Jedi pose (saber-arm snaps back + blade fades in) between hoops and racing */
@@ -286,19 +297,21 @@
         .ball { width: 38px; }
         .ball.soccer { margin-left: -9px; }
         .ball.bball  { margin-left: 20px; }
+        .ball.tennis { width: 19px; margin-left: 89px; bottom: 111px; }
+        .racket { width: 77px; right: -44px; bottom: 65px; transform-origin: -20px 23px; }
         .car { width: 360px; right: auto; left: 50%; margin-left: -180px; bottom: 40px; }
         .hero h1 { font-size: clamp(2.3rem, 11vw, 3.2rem); }
       }
 
       /* ---------- entrance animation ---------- */
       .reveal { opacity: 0; transform: translateY(18px); }
-      .reveal.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .55s cubic-bezier(.2,.8,.3,1.12); }
+      .reveal.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .55s cubic-bezier(.22,1,.36,1); }
       .performer { opacity: 0; }
       .performer.in { opacity: 1; transition: opacity .55s ease .15s; }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        .cloud, .car, .ball, .droid, .bolt, #armSaber, #armFree, #legFront, #legBack { animation: none !important; }
-        .car, .ball, .droid, .bolt { display: none !important; }
+        .cloud, .car, .ball, .droid, .bolt, .racket, #armSaber, #armFree, #legFront, #legBack { animation: none !important; }
+        .car, .ball, .droid, .bolt, .racket { display: none !important; }
         .reveal, .performer, .mascot { opacity: 1 !important; transform: none !important; transition: none !important; }
         .btn, .tile { transition: none !important; }
       }
@@ -316,7 +329,7 @@
         <div class="hero-copy">
           <span class="eyebrow reveal"><span class="wave" aria-hidden="true">👋</span> Hi, I'm Thomas!</span>
           <h1 class="reveal">Welcome to my<br /><span class="line2">GAMES HUB</span></h1>
-          <p class="lede reveal">Three games I made: football, racing, and hoops. They play right here, no download. Jump in!</p>
+          <p class="lede reveal">They play right here, no download. Jump in!</p>
         </div>
 
         <div class="stage" aria-hidden="true">
@@ -327,6 +340,8 @@
             
             <div class="droid" id="droid"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="0" width="1" height="3" fill="#2a1d12"/><rect x="10" y="0" width="1" height="3" fill="#2a1d12"/><rect x="5" y="3" width="6" height="1" fill="#2a1d12"/><rect x="4" y="4" width="1" height="1" fill="#2a1d12"/><rect x="5" y="4" width="6" height="1" fill="#aab2bd"/><rect x="11" y="4" width="1" height="1" fill="#2a1d12"/><rect x="3" y="5" width="1" height="1" fill="#2a1d12"/><rect x="4" y="5" width="2" height="1" fill="#cdd3db"/><rect x="6" y="5" width="6" height="1" fill="#aab2bd"/><rect x="12" y="5" width="1" height="1" fill="#2a1d12"/><rect x="3" y="6" width="1" height="1" fill="#2a1d12"/><rect x="4" y="6" width="3" height="1" fill="#aab2bd"/><rect x="7" y="6" width="2" height="1" fill="#ff3b30"/><rect x="9" y="6" width="3" height="1" fill="#aab2bd"/><rect x="12" y="6" width="1" height="1" fill="#2a1d12"/><rect x="3" y="7" width="1" height="1" fill="#2a1d12"/><rect x="4" y="7" width="3" height="1" fill="#aab2bd"/><rect x="7" y="7" width="1" height="1" fill="#ff6a60"/><rect x="8" y="7" width="1" height="1" fill="#ff3b30"/><rect x="9" y="7" width="3" height="1" fill="#6b7382"/><rect x="12" y="7" width="1" height="1" fill="#2a1d12"/><rect x="3" y="8" width="1" height="1" fill="#2a1d12"/><rect x="4" y="8" width="8" height="1" fill="#6b7382"/><rect x="12" y="8" width="1" height="1" fill="#2a1d12"/><rect x="3" y="9" width="1" height="1" fill="#2a1d12"/><rect x="4" y="9" width="2" height="1" fill="#6b7382"/><rect x="6" y="9" width="4" height="1" fill="#52596a"/><rect x="10" y="9" width="2" height="1" fill="#6b7382"/><rect x="12" y="9" width="1" height="1" fill="#2a1d12"/><rect x="4" y="10" width="1" height="1" fill="#2a1d12"/><rect x="5" y="10" width="6" height="1" fill="#52596a"/><rect x="11" y="10" width="1" height="1" fill="#2a1d12"/><rect x="5" y="11" width="6" height="1" fill="#2a1d12"/></svg></div>
             <div class="bolt" id="bolt"></div>
+            <div class="racket" id="racket"><svg viewBox="0 0 32 22" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect x="19" y="2" width="6" height="1" fill="#3b6fe0"/><rect x="17" y="3" width="2" height="1" fill="#3b6fe0"/><rect x="25" y="3" width="2" height="1" fill="#3b6fe0"/><rect x="16" y="4" width="1" height="1" fill="#3b6fe0"/><rect x="28" y="4" width="1" height="1" fill="#3b6fe0"/><rect x="15" y="5" width="1" height="1" fill="#3b6fe0"/><rect x="29" y="5" width="1" height="1" fill="#3b6fe0"/><rect x="14" y="6" width="1" height="2" fill="#3b6fe0"/><rect x="30" y="6" width="1" height="2" fill="#3b6fe0"/><rect x="13" y="8" width="1" height="6" fill="#3b6fe0"/><rect x="31" y="8" width="1" height="6" fill="#3b6fe0"/><rect x="14" y="14" width="1" height="2" fill="#3b6fe0"/><rect x="30" y="14" width="1" height="2" fill="#3b6fe0"/><rect x="15" y="16" width="1" height="1" fill="#3b6fe0"/><rect x="29" y="16" width="1" height="1" fill="#3b6fe0"/><rect x="16" y="17" width="1" height="1" fill="#3b6fe0"/><rect x="28" y="17" width="1" height="1" fill="#3b6fe0"/><rect x="17" y="18" width="2" height="1" fill="#3b6fe0"/><rect x="25" y="18" width="2" height="1" fill="#3b6fe0"/><rect x="19" y="19" width="6" height="1" fill="#3b6fe0"/><rect x="18" y="3" width="1" height="15" fill="#eef2f7"/><rect x="22" y="2" width="1" height="17" fill="#eef2f7"/><rect x="26" y="3" width="1" height="15" fill="#eef2f7"/><rect x="14" y="6" width="17" height="1" fill="#eef2f7"/><rect x="14" y="10" width="17" height="1" fill="#eef2f7"/><rect x="14" y="14" width="17" height="1" fill="#eef2f7"/><rect x="0" y="8" width="13" height="1" fill="#2a1d12"/><rect x="0" y="9" width="1" height="4" fill="#2a1d12"/><rect x="1" y="9" width="12" height="4" fill="#7a5230"/><rect x="0" y="13" width="13" height="1" fill="#2a1d12"/><rect x="3" y="9" width="1" height="4" fill="#5a3a1e"/><rect x="6" y="9" width="1" height="4" fill="#5a3a1e"/><rect x="9" y="9" width="1" height="4" fill="#5a3a1e"/></svg></div>
+            <div class="ball tennis" id="tennis"><svg viewBox="0 0 14 14" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="0" width="4" height="1" fill="#2a1d12"/><rect x="3" y="1" width="2" height="1" fill="#2a1d12"/><rect x="9" y="1" width="2" height="1" fill="#2a1d12"/><rect x="2" y="2" width="1" height="1" fill="#2a1d12"/><rect x="11" y="2" width="1" height="1" fill="#2a1d12"/><rect x="1" y="3" width="1" height="2" fill="#2a1d12"/><rect x="12" y="3" width="1" height="2" fill="#2a1d12"/><rect x="0" y="5" width="1" height="4" fill="#2a1d12"/><rect x="13" y="5" width="1" height="4" fill="#2a1d12"/><rect x="1" y="9" width="1" height="2" fill="#2a1d12"/><rect x="12" y="9" width="1" height="2" fill="#2a1d12"/><rect x="2" y="11" width="1" height="1" fill="#2a1d12"/><rect x="11" y="11" width="1" height="1" fill="#2a1d12"/><rect x="3" y="12" width="2" height="1" fill="#2a1d12"/><rect x="9" y="12" width="2" height="1" fill="#2a1d12"/><rect x="5" y="13" width="4" height="1" fill="#2a1d12"/><rect x="5" y="1" width="4" height="1" fill="#b6d94a"/><rect x="3" y="2" width="8" height="1" fill="#b6d94a"/><rect x="2" y="3" width="10" height="2" fill="#b6d94a"/><rect x="1" y="5" width="12" height="4" fill="#b6d94a"/><rect x="2" y="9" width="10" height="2" fill="#b6d94a"/><rect x="3" y="11" width="8" height="1" fill="#b6d94a"/><rect x="5" y="12" width="4" height="1" fill="#b6d94a"/><rect x="3" y="2" width="3" height="1" fill="#d4ef6a"/><rect x="2" y="3" width="2" height="2" fill="#d4ef6a"/><rect x="9" y="2" width="1" height="1" fill="#f4f7ec"/><rect x="10" y="3" width="1" height="2" fill="#f4f7ec"/><rect x="10" y="5" width="1" height="3" fill="#f4f7ec"/><rect x="9" y="8" width="1" height="2" fill="#f4f7ec"/><rect x="8" y="10" width="1" height="1" fill="#f4f7ec"/></svg></div>
           </div>
         </div>
       </div>
@@ -457,7 +472,7 @@
             </svg>
             <div>
               <h3>Made by Thomas</h3>
-              <p>I'm a kid who loves building games. These three are done, and I'm still making more. Have fun!</p>
+              <p>I'm a kid who loves building games. I'm still making more. Have fun!</p>
             </div>
           </div>
         </div>
@@ -490,7 +505,7 @@
       // the mascot acts out a loop: Jedi moves -> football -> basketball -> drive off & back -> repeat
       // act class lives on .hero so the re-anchored full-width car (.hero > .car) is matched too
       var actRoot = document.querySelector('.hero');
-      var ACTS = [['act-jedi', 4200], ['act-soccer', 4200], ['act-bball', 4200], ['act-drive', 4600]];
+      var ACTS = [['act-jedi', 4200], ['act-soccer', 4200], ['act-bball', 4200], ['act-tennis', 4200], ['act-drive', 4600]];
       var actIdx = 0, actTimer = null;
       function runAct() {
         ACTS.forEach(function (a) { actRoot.classList.remove(a[0]); });
