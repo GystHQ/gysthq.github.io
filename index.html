@@ -26,6 +26,7 @@
         --f1: #e10600; --f1-cyan:#18c3ff;
         --bb: #ee6730; --bb-purple:#a06bff;
         --tn: #46a049; --tn-dark:#2c7a36;
+        --myth: #6b4ba8; --myth-dark:#4a2f86;
         --font-display: 'Lilita One', system-ui, sans-serif;
         --font-body: 'Baloo 2', system-ui, sans-serif;
       }
@@ -253,8 +254,8 @@
       .tile p { font-weight: 600; font-size: 1rem; line-height: 1.4; margin: 9px 0 16px; color: #2b3340; flex: 1; }
       .tile .btn { width: 100%; justify-content: center; }
 
-      .wc-face { background: var(--wc); } .f1-face { background: var(--ink); } .bb-face { background: var(--bb); } .tn-face { background: var(--tn); }
-      .wc h3 { color: var(--wc-dark); } .f1 h3 { color: var(--f1); } .bb h3 { color: #c24a1c; } .tn h3 { color: var(--tn-dark); }
+      .wc-face { background: var(--wc); } .f1-face { background: var(--ink); } .bb-face { background: var(--bb); } .tn-face { background: var(--tn); } .myths-face { background: var(--myth); }
+      .wc h3 { color: var(--wc-dark); } .f1 h3 { color: var(--f1); } .bb h3 { color: #c24a1c; } .tn h3 { color: var(--tn-dark); } .myths h3 { color: var(--myth-dark); }
       .wc .btn { background: var(--sun); --edge: var(--sun-dark); }
       .f1 .btn { background: #c70500; --edge: #930300; color: #fff; }
       .bb .btn { background: #7a45e0; --edge: #5a2fbe; color: #fff; }
@@ -445,6 +446,36 @@
                 <h3>Davis Cup Tennis<span class="by">ATP &amp; WTA</span></h3>
                 <p>Pick your nation, build a Davis Cup five of men and women, then PLAY every point — serve, rally and score 0-15-30-40 on grass, clay, hard and indoor courts.</p>
                 <span class="btn small">Pick your nation <span class="chev">▸</span></span>
+              </span>
+            </a>
+
+            <!-- Myth Clash: mythology (a golden temple on a night-violet sky) -->
+            <a class="tile myths" href="/myths/" aria-label="Play Myth Clash, the mythology card battler">
+              <span class="scene myths-face" aria-hidden="true">
+                <svg viewBox="0 0 120 44" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" shape-rendering="crispEdges">
+                  <g stroke="#1d2330" stroke-width="1">
+                    <polygon points="40,15 80,15 60,4" fill="#ffd646"/>
+                    <rect x="41" y="15" width="38" height="4" fill="#f5c518"/>
+                    <rect x="44" y="19" width="4" height="15" fill="#ffe9a6"/>
+                    <rect x="52" y="19" width="4" height="15" fill="#ffe9a6"/>
+                    <rect x="60" y="19" width="4" height="15" fill="#ffe9a6"/>
+                    <rect x="68" y="19" width="4" height="15" fill="#ffe9a6"/>
+                    <rect x="40" y="34" width="40" height="4" fill="#f5c518"/>
+                    <rect x="37" y="38" width="46" height="3" fill="#e3a81d"/>
+                  </g>
+                  <g fill="#ffd646">
+                    <polygon points="20,11 22,16 27,18 22,20 20,25 18,20 13,18 18,16"/>
+                    <polygon points="99,13 100.5,17 104,18 100.5,19 99,23 97.5,19 94,18 97.5,17"/>
+                    <circle cx="31" cy="31" r="1.6"/>
+                    <circle cx="90" cy="31" r="1.6"/>
+                  </g>
+                </svg>
+              </span>
+              <span class="tile-body">
+                <span class="tag">🏛️ Live now</span>
+                <h3>Myth Clash<span class="by">Mythology · battler</span></h3>
+                <p>Collect heroes, gods and monsters from 12 world mythologies, build a team of three, then battle head-to-head — pick your moves and unleash a charged signature ultimate!</p>
+                <span class="btn small">Pick your pantheon <span class="chev">▸</span></span>
               </span>
             </a>
 
